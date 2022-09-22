@@ -8,8 +8,9 @@ Start and stop any windows service direclty via the GUI. Progress of the started
 1.  Run D365FTServiceManager.exe (will ask to be run as administrator).
 2.  Once the GUI opened, you can start the predefined services (if you have access to these) by clicking the "Start" button.
 3.  You can use the "Stop" button to stop all services included in the list.
-4.  You can also add additional services by typing the name of the service in the input and clicking the "Add" button. Added       services will also be included in the service list.
-5.  You can also select, or multiselect with <kbd>Ctrl</kbd> + <kbd>LMB</kbd>, any service in the list and remove them via the "Remove"           button. This just removes them from the list and **does not** stop them.
+4.  You can also add additional services by typing the name of the service in the input and clicking the "Add" button or by pressing <kbd>Enter</kbd>.
+5.  You can also select, or multiselect with <kbd>Ctrl</kbd> + <kbd>LMB</kbd>, any service in the list and remove them via the "Remove" button. This just removes them from the list and **does not** stop them.
+6.  You can also Start/Stop/Remove services individually with the context menu by right clicking them.
 
 ![image](https://user-images.githubusercontent.com/112094138/191783407-28ca1bf7-e66f-4b15-828b-58c313e8eb26.png)
 # Edit the script
