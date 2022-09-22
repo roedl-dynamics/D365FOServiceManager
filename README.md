@@ -11,7 +11,7 @@ Start and stop any windows service direclty via the GUI. Progress of the started
 4.  You can also add additional services by typing the name of the service in the input and clicking the "Add" button. Added       services will also be included in the service list.
 5.  You can also select, or multiselect with <kbd>Ctrl</kbd> + <kbd>LMB</kbd>, any service in the list and remove them via the "Remove"           button. This just removes them from the list and **does not** stop them.
 
-![image](https://user-images.githubusercontent.com/112094138/187368274-dbb93b33-bc2c-4c92-aea3-762139638d8f.png)
+![image](https://user-images.githubusercontent.com/112094138/191783407-28ca1bf7-e66f-4b15-828b-58c313e8eb26.png)
 # Edit the script
 
 This program is purely written with the AutoIt script editor SciTE. 
