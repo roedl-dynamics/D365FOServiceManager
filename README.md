@@ -13,7 +13,7 @@ Start and stop any windows service direclty via the GUI. Progress of the started
 6.  You can also Start/Stop/Remove services individually with the context menu by right clicking them.
 7.  The arrow button refreshes the status of the services if they have been started/stopped without the tool.
 
-![image](https://user-images.githubusercontent.com/112094138/191783407-28ca1bf7-e66f-4b15-828b-58c313e8eb26.png)
+![image](https://github.com/roedl-dynamics/D365FOServiceManager/blob/main/ServiceManagerGUI.PNG)
 # Edit the script
 
 This program is purely written with the AutoIt script editor SciTE. 
