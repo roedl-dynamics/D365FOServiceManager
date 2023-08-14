@@ -41,12 +41,16 @@ Global $hGui = GUICreate("Rödl Dynamics - D365 Service Maintain", 536, 400, -1,
 Global $idProgress = GUICtrlCreateProgress(28, 22, 481, 73, BitOR($PBS_SMOOTH, $WS_BORDER))
 Global $idStopButton = GUICtrlCreateButton("Stop all", 28, 110, 225, 73, $WS_BORDER)
 Global $idStartButton = GUICtrlCreateButton("Start all", 283, 110, 225, 73,  $WS_BORDER)
-Global $idAdd = GUICtrlCreateButton("Add", 135, 352, 100, 20)
+;~ Global $idAdd = GUICtrlCreateButton("Add", 135, 352, 100, 20)
+Global $idAdd = GUICtrlCreateButton("Add", 170, 352, 64, 20)
 Global $idRefresh = GUICtrlCreateButton("", 250, 352, 20, 20, $BS_ICON)
 GUICtrlSetImage(-1, "C:\Windows\System32\imageres.dll", -229, 0)
 Global $idInput = GUICtrlCreateInput("", 283, 352, 225, 21)
-Global $idRemove = GUICtrlCreateButton("Remove", 28, 352, 100, 20)
+;~ Global $idRemove = GUICtrlCreateButton("Remove", 28, 352, 100, 20)
+Global $idRemove = GUICtrlCreateButton("Remove", 28, 352, 64, 20)
 Global $idListview = GUICtrlCreateListView("Service | Name| Status | Starting-, StoppingID", 28, 194, 481, 141, BitOR($LVS_SHOWSELALWAYS, $LVS_REPORT))
+Global $idRestart = GUICtrlCreateButton("Reset", 99, 352, 64, 20)
+
 
 _GUICtrlListView_SetColumnWidth($idListview, 0, 183)
 _GUICtrlListView_SetColumnWidth($idListview, 1, 183)
@@ -62,10 +66,7 @@ Global $oShell = ObjCreate("shell.application"), $Enter_KEY = GUICtrlCreateDummy
 Dim $Arr[1][2] = [["{ENTER}", $Enter_KEY]]
 GUISetAccelerators($Arr)
 
-GUICtrlCreateListViewItem("MR2012ProcessService|" & $sStatus, $idListview)
-GUICtrlCreateListViewItem("DynamicsAxBatch|" & $sStatus, $idListview)
-GUICtrlCreateListViewItem("Microsoft.Dynamics.AX.Framework.Tools.DMF.SSISHelperService.exe|" & $sStatus, $idListview)
-GUICtrlCreateListViewItem("W3SVC|" & $sStatus, $idListview)
+_setServices()
 
 GUISetState(@SW_SHOW)
 GUIRegisterMsg($WM_NOTIFY, "WM_NOTIFY")
@@ -100,6 +101,8 @@ While 1
 			EndIf
 		Case $idRemove
 			_removeService()
+		Case $idRestart
+			_setServices()
 		Case $idSubmenuStart
 			$sServiceAction = "NET START "
 			$sStatus = "Running"
@@ -278,3 +281,25 @@ Func _refreshStatus()
 		_GUICtrlListView_SetItem($idListview, $sStatus, $i, 2)
 	Next
 EndFunc   ;==>_refreshStatus
+
+Func _setServices()
+;~ 	ConsoleWrite(_GUICtrlListView_GetItemCount($idListview) & @CRLF)
+	_GUICtrlListView_DeleteAllItems($idListview)
+
+	GUICtrlCreateListViewItem("MR2012ProcessService|" & $sStatus, $idListview)
+	GUICtrlCreateListViewItem("DynamicsAxBatch|" & $sStatus, $idListview)
+	GUICtrlCreateListViewItem("Microsoft.Dynamics.AX.Framework.Tools.DMF.SSISHelperService.exe|" & $sStatus, $idListview)
+	GUICtrlCreateListViewItem("W3SVC|" & $sStatus, $idListview)
+	_refreshStatus()
+
+
+
+
+
+
+
+
+
+
+
+EndFunc
