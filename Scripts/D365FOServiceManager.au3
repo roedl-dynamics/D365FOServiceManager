@@ -2,7 +2,7 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=zahnrad.ico
 #AutoIt3Wrapper_Res_Description=Program to stop and start services via a GUI
-#AutoIt3Wrapper_Res_Fileversion=1.0.0.4
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.5
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
 #AutoIt3Wrapper_Res_CompanyName=Rödl Dynamics GmbH
 #AutoIt3Wrapper_Res_Language=1031
@@ -49,7 +49,7 @@ Global $idInput = GUICtrlCreateInput("", 283, 352, 225, 21)
 ;~ Global $idRemove = GUICtrlCreateButton("Remove", 28, 352, 100, 20)
 Global $idRemove = GUICtrlCreateButton("Remove", 28, 352, 64, 20)
 Global $idListview = GUICtrlCreateListView("Service | Name| Status | Starting-, StoppingID", 28, 194, 481, 141, BitOR($LVS_SHOWSELALWAYS, $LVS_REPORT))
-Global $idRestart = GUICtrlCreateButton("Reset", 99, 352, 64, 20)
+Global $idReset = GUICtrlCreateButton("Reset", 99, 352, 64, 20)
 
 
 _GUICtrlListView_SetColumnWidth($idListview, 0, 183)
@@ -73,9 +73,9 @@ GUIRegisterMsg($WM_NOTIFY, "WM_NOTIFY")
 #EndRegion ### END Koda GUI section ###
 
 
-; Sets the status and name of the services in the predefined list on startup
+; Sets the status and name of the services in the predefined list on startup. UPD: included in _setServices()
 
-_refreshStatus()
+;_refreshStatus()
 
 ; Actions to execute on certain interactions with the GUI
 
@@ -101,7 +101,7 @@ While 1
 			EndIf
 		Case $idRemove
 			_removeService()
-		Case $idRestart
+		Case $idReset
 			_setServices()
 		Case $idSubmenuStart
 			$sServiceAction = "NET START "
@@ -283,23 +283,10 @@ Func _refreshStatus()
 EndFunc   ;==>_refreshStatus
 
 Func _setServices()
-;~ 	ConsoleWrite(_GUICtrlListView_GetItemCount($idListview) & @CRLF)
 	_GUICtrlListView_DeleteAllItems($idListview)
-
 	GUICtrlCreateListViewItem("MR2012ProcessService|" & $sStatus, $idListview)
 	GUICtrlCreateListViewItem("DynamicsAxBatch|" & $sStatus, $idListview)
 	GUICtrlCreateListViewItem("Microsoft.Dynamics.AX.Framework.Tools.DMF.SSISHelperService.exe|" & $sStatus, $idListview)
 	GUICtrlCreateListViewItem("W3SVC|" & $sStatus, $idListview)
 	_refreshStatus()
-
-
-
-
-
-
-
-
-
-
-
 EndFunc
