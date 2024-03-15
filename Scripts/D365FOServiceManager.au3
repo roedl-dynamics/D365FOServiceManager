@@ -72,6 +72,10 @@ GUISetState(@SW_SHOW)
 GUIRegisterMsg($WM_NOTIFY, "WM_NOTIFY")
 #EndRegion ### END Koda GUI section ###
 
+;Local $class = "[CLASS:D365FOServiceManager.exe]"
+Local $state
+Local $counter = 0
+
 
 ; Sets the status and name of the services in the predefined list on startup. UPD: included in _setServices()
 
@@ -80,6 +84,7 @@ GUIRegisterMsg($WM_NOTIFY, "WM_NOTIFY")
 ; Actions to execute on certain interactions with the GUI
 
 While 1
+	$state = WinGetState($hGui)
 	Switch GUIGetMsg()
 		Case $GUI_EVENT_CLOSE
 			ExitLoop
@@ -115,7 +120,23 @@ While 1
 			_removeService()
 		Case $idRefresh
 			_refreshStatus()
+		;Sorgt für einen Refresh wenn es zurück in den Vordergrund geholt wird
+		;Case BitAND($state,$WIN_STATE_ACTIVE)
+		;	_refreshStatus()
+		;	ConsoleWrite("Refresh wird durchgeführt: "&@CRLF)
 	EndSwitch
+
+	;$state = WinGetState($hGui)
+	If BitAND($state,$WIN_STATE_ACTIVE) and $counter == 0 then
+		_refreshStatus()
+		$counter = $counter+1
+		ConsoleWrite("Refresh wurde durchgeführt"&@CRLF)
+	EndIf
+	If not BitAND($state,$WIN_STATE_ACTIVE) and $counter == 1 then
+		$counter = $counter-1
+		ConsoleWrite("Refresh wurde nicht durchgeführt"&@CRLF)
+	EndIf
+
 WEnd
 Exit 0
 
