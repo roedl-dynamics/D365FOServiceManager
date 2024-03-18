@@ -126,7 +126,7 @@ While 1
 		;	ConsoleWrite("Refresh wird durchgeführt: "&@CRLF)
 	EndSwitch
 
-	;$state = WinGetState($hGui)
+	;Prüft ob das Fenster wieder Aktiv ist und führt einen Refresh durch
 	If BitAND($state,$WIN_STATE_ACTIVE) and $counter == 0 then
 		_refreshStatus()
 		$counter = $counter+1
