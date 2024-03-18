@@ -120,10 +120,6 @@ While 1
 			_removeService()
 		Case $idRefresh
 			_refreshStatus()
-		;Sorgt für einen Refresh wenn es zurück in den Vordergrund geholt wird
-		;Case BitAND($state,$WIN_STATE_ACTIVE)
-		;	_refreshStatus()
-		;	ConsoleWrite("Refresh wird durchgeführt: "&@CRLF)
 	EndSwitch
 
 	;Prüft ob das Fenster wieder Aktiv ist und führt einen Refresh durch
