@@ -130,11 +130,11 @@ While 1
 	If BitAND($state,$WIN_STATE_ACTIVE) and $counter == 0 then
 		_refreshStatus()
 		$counter = $counter+1
-		ConsoleWrite("Refresh wurde durchgeführt"&@CRLF)
+		;ConsoleWrite("Refresh wurde durchgeführt"&@CRLF)
 	EndIf
 	If not BitAND($state,$WIN_STATE_ACTIVE) and $counter == 1 then
 		$counter = $counter-1
-		ConsoleWrite("Refresh wurde nicht durchgeführt"&@CRLF)
+		;ConsoleWrite("Refresh wurde nicht durchgeführt"&@CRLF)
 	EndIf
 
 WEnd
@@ -301,6 +301,7 @@ Func _refreshStatus()
 		_GUICtrlListView_SetItem($idListview, _Service_QueryDisplayName($sService), $i, 1)
 		_GUICtrlListView_SetItem($idListview, $sStatus, $i, 2)
 	Next
+	ConsoleWrite("Refresh wurde durchgeführt"&@CRLF)
 EndFunc   ;==>_refreshStatus
 
 Func _setServices()
