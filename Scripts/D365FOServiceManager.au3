@@ -18,6 +18,7 @@
 #ce ----------------------------------------------------------------------------
 
 Opt("MustDeclareVars", 1)
+Opt("TrayAutoPause", 0)
 
 #include <Array.au3>
 #include <AutoItConstants.au3>
