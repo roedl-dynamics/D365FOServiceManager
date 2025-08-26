@@ -2,9 +2,9 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=zahnrad.ico
 #AutoIt3Wrapper_Res_Description=Program to stop and start services via a GUI
-#AutoIt3Wrapper_Res_Fileversion=1.0.0.8
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.9
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
-#AutoIt3Wrapper_Res_CompanyName=Rödl Dynamics GmbH
+#AutoIt3Wrapper_Res_CompanyName=Visionet Dynamics GmbH
 #AutoIt3Wrapper_Res_Language=1031
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #cs ----------------------------------------------------------------------------
@@ -37,7 +37,7 @@ Opt("TrayAutoPause", 0)
 
 
 #Region ### START Koda GUI section ### Form=
-Global $hGui = GUICreate("Rödl Dynamics - D365 Service Maintain", 536, 400, -1, -1)
+Global $hGui = GUICreate("Visionet Dynamics - D365 Service Maintain", 536, 400, -1, -1)
 
 Global $idProgress = GUICtrlCreateProgress(28, 22, 481, 73, BitOR($PBS_SMOOTH, $WS_BORDER))
 Global $idStopButton = GUICtrlCreateButton("Stop all", 28, 110, 225, 73, $WS_BORDER)
